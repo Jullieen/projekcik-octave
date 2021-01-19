@@ -1,4 +1,4 @@
-function akordy(answer)
+function akordy()
 clc;
 clear all;
 close all;
@@ -35,14 +35,15 @@ if sel == 1
 
     %odszukuje odpowiadaj¹c¹ pozycje ze zbioru chord w zbiorze files
     s = files(y)
-    
+    plik = ['akordy/' char(s)];
+    printf(plik)
     %tworzê okno do kontunuowania b¹dŸ anulacji testu
     h=questdlg('Chcesz kontynuowac?', 'Kontynuowac?', 'Kontynuuj', 'Anuluj', 'Kontynuuj');
     switch h
       case 'Kontynuuj'
     
     %wczytuje i odtwarza
-    [wave, fs] = audioread(char(s));
+    [wave, fs] = audioread(plik);
      sound(wave, 48000);
      
      %warunek jeden:jeœli y jest miêdzy indeksem 1 a 8 ze zbioru chord to przypisuje wartoœc n=1 - ta wartoœc odpowiada indeksowi z listy odpowiedzi
@@ -60,7 +61,7 @@ if sel == 1
             uiwait(msgbox('Poprawnie! Zdobywasz 1 punkt.'));
             score = score + 1
        else
-            uiwait(msgbox(['Nie trafi³eœ. Poprawny interwa³ to ', char(answer(n)),'.']));
+            uiwait(msgbox(['Nie trafi³eœ. Poprawny akord to ', char(answer(n)),'.']));
             score1=score1 +1;
        endif
      %warunek dwa:jeœli y jest miêdzy indeksem 9 a 16 ze zbioru chord to przypisuje wartoœc n=2 - ta wartoœc odpowiada indeksowi z listy odpowiedzi      

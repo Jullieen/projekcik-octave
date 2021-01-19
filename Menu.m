@@ -13,11 +13,11 @@ while(sel != 5)
   if (sel == 1)
     rozpoznawanie_wysokosci(0, 0)
   elseif (sel == 2)
-    
+    interwaly()
   elseif (sel == 3)
-    
+    akordy()
   elseif (sel == 4)
-    waitfor(msgbox ("To jest instrukcja obs³ugi programu do kszta³cenia s³uchu. Wybierz modu³ treningowy z listy", "Instrukcja obs³ugi"));
+    waitfor(msgbox ("To jest instrukcja obs³ugi programu do kszta³cenia s³uchu. \n Masz do wyboru 3 modu³y: \n 1. Æwiczenia rozpoznawania wysokoœci dŸwiêków \n 2. Æwiczenie rozpoznawania interwa³ów \n 3. Æwiczenie rozpoznawania akordów \n Mo¿esz wybraæ modu³ treningowy z listy w menu g³ównym", "Instrukcja obs³ugi"));
   else 
     close all;
   endif

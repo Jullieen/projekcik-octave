@@ -1,4 +1,4 @@
-function interwaly(interw)
+function interwaly()
 pkg load statistics
 
 str={'C', 'C#','D','D#','E','F','F#','G','G#','A', 'B', 'H', 'C2'};
@@ -16,7 +16,6 @@ score1 = 0;
 
 %jeœli u¿ytkownik wybierze opcjê testu
 if sel == 1
-  uiwait(msgbox('Test start'));
   
   %pêtla na powtarzanie interwa³ów a¿ u¿ytkownik anuluje
    while (1)
@@ -36,7 +35,8 @@ if sel == 1
     %odszukuje odpowiadaj¹c¹ pozycje ze zbioru str w zbiorze names
     s = names(1,y);
     s1 = names(1,y2);
-
+    plik = ['interwaly/' char(s)];
+    plik2 = ['interwaly/' char(s1)];
     h=questdlg('Chcesz kontynuowac?', 'Kontynuowac?', 'Kontynuuj', 'Anuluj', 'Kontynuuj');
     
     %funkcja przypisania co siê dzieje po wciœniêciu przycisków kontynuuj i anuluj
@@ -47,8 +47,8 @@ if sel == 1
       if y < y2
         
          %wczytuje i odtwarza
-         [wave1, fs] = audioread(char(s));
-         [wave2, fs] = audioread(char(s1));
+         [wave1, fs] = audioread(char(plik));
+         [wave2, fs] = audioread(char(plik2));
           wave3 = [wave1;wave2];
           sound(wave3, 48000);
           
@@ -61,7 +61,7 @@ if sel == 1
           [odp, ok] = listdlg("ListString", interw,
                            "SelectionMode", "Single",
                            "Name","Wybierz us³yszany interwa³",
-                           "ListSize",[500,250], 
+                           "ListSize",[500,350], 
                            "CancelString", "Anuluj");
 
           if (odp == c)
@@ -81,8 +81,8 @@ if sel == 1
           %kiedy pierwszy dŸwiêk jest wy¿ej od drugiego
       elseif y > y2
          %wczytuje i odtwarza
-         [wave1, fs] = audioread(char(s));
-         [wave2, fs] = audioread(char(s1));
+         [wave1, fs] = audioread(char(plik));
+         [wave2, fs] = audioread(char(plik2));
           wave3 = [wave1;wave2];
           sound(wave3, 48000);
       
