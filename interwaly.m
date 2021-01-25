@@ -10,7 +10,7 @@ polton = [0,1,2,3,4,5,6,7,8,9,10,11,12];
 my_options = {"Rozpocznij test interwa≥Ûw", "Wyjdü z programu"};
 
 [sel, ok] = listdlg ("ListString", my_options,
-                     "SelectionMode", "Multiple","Name","Test na rozpoznawanie interwa≥Ûw","ListSize",[300,160], "CancelString", "Anuluj");
+                     "SelectionMode", "Single","Name","Test na rozpoznawanie interwa≥Ûw","ListSize",[300,160], "CancelString", "Anuluj");
 score =0;
 score1 = 0;
 
