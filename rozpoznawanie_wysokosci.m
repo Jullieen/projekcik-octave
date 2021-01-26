@@ -12,7 +12,7 @@ function [odp_poprawne, odp_laczne] = rozpoznawanie_wysokosci(odp_poprawne_2, od
     numer_oktawy = oktawa;
   endif
   
-  numer_nuty = randi([1,12])
+  numer_nuty = randi([1,12]);
   
   nazwa_pliku = 3 + numer_oktawy * 12 + numer_nuty;
   zagraj(nazwa_pliku)
@@ -21,16 +21,16 @@ function [odp_poprawne, odp_laczne] = rozpoznawanie_wysokosci(odp_poprawne_2, od
                        "Name","Wybierz us≥yszany düwiÍk",
                        "ListSize",[500,250], 
                        "CancelString", "Anuluj");
-  odp_poprawne = odp_poprawne_2
-  odp_laczne = odp_laczne_2 + 1
+  odp_poprawne = odp_poprawne_2;
+  odp_laczne = odp_laczne_2 + 1;
   if (odp == numer_nuty)
     waitfor(msgbox(["Poprawnie! To by≥ düwiÍk",tablica(numer_nuty)]))
-    odp_poprawne = odp_poprawne + 1
+    odp_poprawne = odp_poprawne + 1;
   else
     waitfor(msgbox(["èle! To by≥ düwiÍk",tablica(numer_nuty)]))
   endif
   
-  temp = questdlg("Czy chcesz kontynuowaÊ?", "Ponownie?","Tak", "Nie", "Zmiana oktawy", "Nie")
+  temp = questdlg("Czy chcesz kontynuowaÊ?", "Ponownie?","Tak", "Nie", "Zmiana oktawy", "Nie");
   if (strcmp(temp, "Tak"))
     rozpoznawanie_wysokosci(odp_poprawne, odp_laczne, numer_oktawy)
   elseif (strcmp(temp, "Nie"))

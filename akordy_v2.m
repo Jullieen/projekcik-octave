@@ -2,7 +2,7 @@ function [odp_poprawne, odp_laczne] = akordy_v2 (odp_poprawne_2, odp_laczne_2, o
   
   
   if(oktawa == 0)
-    oktawy = {"Kontra", "Wielka", "Ma³a", "Razkreœlna", "Dwukreœlna", "Trzykreœlna"}
+    oktawy = {"Kontra", "Wielka", "Ma³a", "Razkreœlna", "Dwukreœlna", "Trzykreœlna"};
     [numer_oktawy, ok] = listdlg("ListString", oktawy,
                          "SelectionMode", "Single",
                          "Name","Wybierz oktawê pierwszego klawisza",
@@ -25,7 +25,7 @@ function [odp_poprawne, odp_laczne] = akordy_v2 (odp_poprawne_2, odp_laczne_2, o
   nuta_3 = nuta_2 + odstep_2;
   nuty = [nuta_1, nuta_2, nuta_3];
   zagraj(nuty)
-  rodzaje_akordow={"Dur", "Mol", "Zmniejszony", "Zwiêkszony"}
+  rodzaje_akordow={"Dur", "Mol", "Zmniejszony", "Zwiêkszony"};
   [odp, ok] = listdlg("ListString", rodzaje_akordow,
                        "SelectionMode", "Single",
                        "Name","Wybierz us³yszany akord",
@@ -38,7 +38,7 @@ function [odp_poprawne, odp_laczne] = akordy_v2 (odp_poprawne_2, odp_laczne_2, o
       poprawna_odp = 4;
     endif
   else
-    if(odstep_2 = 3)
+    if(odstep_2 == 3)
       poprawna_odp = 3;
     else
       poprawna_odp = 2;

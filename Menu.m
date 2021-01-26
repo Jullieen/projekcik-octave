@@ -2,7 +2,7 @@ clc;
 clear;
 close all;
 
-sel = 0
+sel = 0;
 while(sel != 5)
   my_options = {"Rozpoznawanie wysokoœci dŸwiêku", "Rozpoznawanie interwa³ów", "Rozpoznawanie akordów", "Instrukcja obslugi", "Wyjdz"};
   [sel, ok] = listdlg ("ListString", my_options,
