@@ -3,21 +3,21 @@ pkg load statistics
 
 str={'C', 'C#','D','D#','E','F','F#','G','G#','A', 'B', 'H', 'C2'};
 names = {'c1.wav', 'c#.wav', 'd.wav',  'd#.wav','e.wav','f.wav','f#.wav','g.wav','g#.wav','a.wav','b.wav','h.wav','c2.wav'};
-interw = {'pryma czysta', 'sekunda ma≈Ça', 'sekunda wielka','tercja ma≈Ça','tercja wielka','kwarta czysta','kwinta zmniejszona','kwinta czysta','seksta ma≈Ça','seksta wielka','septyma ma≈Ça','septyma wielka','oktawa czysta'};
+interw = {'pryma czysta', 'sekunda ma≥a', 'sekunda wielka','tercja ma≥a','tercja wielka','kwarta czysta','kwinta zmniejszona','kwinta czysta','seksta ma≥a','seksta wielka','septyma ma≥a','septyma wielka','oktawa czysta'};
 polton = [0,1,2,3,4,5,6,7,8,9,10,11,12];
 
-%tworzƒô menu 1
-my_options = {"Rozpocznij test interwa≈Ç√≥w", "Wyjd≈∫ z programu"};
+%tworzÍ menu 1
+my_options = {"Rozpocznij test interwa≥Ûw", "Wyjdü z programu"};
 
 [sel, ok] = listdlg ("ListString", my_options,
-                     "SelectionMode", "Single","Name","Test na rozpoznawanie interwa≈Ç√≥w","ListSize",[300,160], "CancelString", "Anuluj");
+                     "SelectionMode", "Single","Name","Test na rozpoznawanie interwa≥Ûw","ListSize",[300,160], "CancelString", "Anuluj");
 score =0;
 score1 = 0;
 
-%je≈õli u≈ºytkownik wybierze opcjƒô testu
+%jeúli uøytkownik wybierze opcjÍ testu
 if sel == 1
   
-  %pƒôtla na powtarzanie interwa≈Ç√≥w a≈º u≈ºytkownik anuluje
+  %pÍtla na powtarzanie interwa≥Ûw aø uøytkownik anuluje
    while (1)
   
         %generuje randomowe elementy zbioru
@@ -32,40 +32,27 @@ if sel == 1
     y = find(strcmp(str, z));
     y2 = find(strcmp(str, z2));
 
-    %odszukuje odpowiadajƒÖcƒÖ pozycje ze zbioru str w zbiorze names
+    %odszukuje odpowiadajπcπ pozycje ze zbioru str w zbiorze names
     s = names(1,y);
     s1 = names(1,y2);
     plik = ['interwaly/' char(s)];
     plik2 = ['interwaly/' char(s1)];
     h=questdlg('Chcesz kontynuowac?', 'Kontynuowac?', 'Kontynuuj', 'Anuluj', 'Kontynuuj');
     
-    %funkcja przypisania co siƒô dzieje po wci≈õniƒôciu przycisk√≥w kontynuuj i anuluj
+    %funkcja przypisania co siÍ dzieje po wciúniÍciu przyciskÛw kontynuuj i anuluj
     switch h
       case 'Kontynuuj'
     
-    %kiedy pierwszy d≈∫wiƒôk jest wy≈ºszy od drugiego
+    %kiedy pierwszy düwiÍk jest wyøszy od drugiego
       if y < y2
         
          %wczytuje i odtwarza
-         for k =1
-              
-             [wave1, fs] = audioread(char(plik));
-              [wave2, fs] = audioread(char(plik2));
-              %tworzƒô punkt start i stop dla danego pliku audio
-               playerObj1 = audioplayer(wave1,48000);
-              start1 = 0.5;
-              stop1 = playerObj1.SampleRate * 2;
-              play(playerObj1,[start1,stop1]);
-              %pausa miƒôdzy d≈∫wiƒôkami przez 1 sekundƒô
-             pause(1);
-             %odtwarza drugi d≈∫wiƒôk
-             playerObj2 = audioplayer(wave2,48000);
-              start2 = 0.5;
-              stop2 = playerObj2.SampleRate * 2;
-              play(playerObj2,[start2,stop2]);
-         endfor
+         [wave1, fs] = audioread(char(plik));
+         [wave2, fs] = audioread(char(plik2));
+          wave3 = [wave1;wave2];
+          sound(wave3, 48000);
           
-          %xyspace liczy odleg≈Ço≈õc miedzy d≈∫wiƒôkami, find odszukuje index, zmienna b przypisuje znaleziony indeks do indeksu w tablicy interw
+          %xyspace liczy odleg≥oúc miedzy düwiÍkami, find odszukuje index, zmienna b przypisuje znaleziony indeks do indeksu w tablicy interw
           n = xyspace(str, z, z2);
           c = find(polton == n);
           b = interw(1, c);
@@ -73,7 +60,7 @@ if sel == 1
           %pokazuje okno dialogowe input
           [odp, ok] = listdlg("ListString", interw,
                            "SelectionMode", "Single",
-                           "Name","Wybierz us≈Çyszany interwa≈Ç",
+                           "Name","Wybierz us≥yszany interwa≥",
                            "ListSize",[500,350], 
                            "CancelString", "Anuluj");
 
@@ -84,33 +71,20 @@ if sel == 1
               
           elseif (odp ~= c)
             
-             uiwait(msgbox(['Nie trafi≈Çe≈õ. Poprawny interwa≈Ç to ', char(b),'.']));
+             uiwait(msgbox(['Nie trafi≥eú. Poprawny interwa≥ to ', char(b),'.']));
              score1 = score1 +1 ;
           else
              close all;
                
           endif
 
-          %kiedy pierwszy d≈∫wiƒôk jest wy≈ºej od drugiego
+          %kiedy pierwszy düwiÍk jest wyøej od drugiego
       elseif y > y2
          %wczytuje i odtwarza
-         for k =1
-              
-             [wave1, fs] = audioread(char(plik));
-              [wave2, fs] = audioread(char(plik2));
-              %tworzƒô punkt start i stop dla danego pliku audio
-               playerObj1 = audioplayer(wave1,48000);
-              start1 = 0.5;
-              stop1 = playerObj1.SampleRate * 2;
-              play(playerObj1,[start1,stop1]);
-              %pausa miƒôdzy d≈∫wiƒôkami przez 1 sekundƒô
-             pause(1);
-             %odtwarza drugi d≈∫wiƒôk
-             playerObj2 = audioplayer(wave2,48000);
-              start2 = 0.5;
-              stop2 = playerObj2.SampleRate * 2;
-              play(playerObj2,[start2,stop2]);
-         endfor
+         [wave1, fs] = audioread(char(plik));
+         [wave2, fs] = audioread(char(plik2));
+          wave3 = [wave1;wave2];
+          sound(wave3, 48000);
       
           n1 = xyspace(str, z2, z);
           c1 = find(polton==n1);
@@ -118,7 +92,7 @@ if sel == 1
           
           [odp, ok] = listdlg("ListString", interw,
                            "SelectionMode", "Single",
-                           "Name","Wybierz us≈Çyszany interwa≈Ç",
+                           "Name","Wybierz us≥yszany interwa≥",
                            "ListSize",[500,250], 
                            "CancelString", "Anuluj");
 
@@ -129,7 +103,7 @@ if sel == 1
               score = score + 1;
           elseif (odp ~= c1)
               
-              uiwait(msgbox(['Nie trafi≈Çe≈õ. Poprawny interwa≈Ç to ', char(b1),'.']));
+              uiwait(msgbox(['Nie trafi≥eú. Poprawny interwa≥ to ', char(b1),'.']));
               score1 =score1 + 1;
           else 
               close all;
@@ -144,12 +118,12 @@ if sel == 1
        endswitch
      endwhile
   elseif sel==2
-    %uiwait(msgbox('Witaj w programie do rozpoznawania interwa≈Ç√≥w. Po rozpoczƒôciu testu, zostanie Ci zaprezentowanych 10 d≈∫wiƒôk√≥w tworzƒÖcych 5 interwa≈Ç√≥w. Twoim zadaniem jest rozpoznanie co to za interwa≈Ç i wybranie poprawnej opcji z listy. Powodzenia!'));
+    %uiwait(msgbox('Witaj w programie do rozpoznawania interwa≥Ûw. Po rozpoczÍciu testu, zostanie Ci zaprezentowanych 10 düwiÍkÛw tworzπcych 5 interwa≥Ûw. Twoim zadaniem jest rozpoznanie co to za interwa≥ i wybranie poprawnej opcji z listy. Powodzenia!'));
     uiwait(msgbox('wychodzisz z programu.'));
     close all;
   endif
 score_all = score + score1;
-waitfor(msgbox(['Opowiedzia≈Çe≈õ poprawnie na ', num2str(score), ' z ', num2str(score_all), ' prezentowanych interwa≈Ç√≥w.']))
+waitfor(msgbox(['Opowiedzia≥eú poprawnie na ', num2str(score), ' z ', num2str(score_all), ' prezentowanych interwa≥Ûw.']))
 close all;
 
 endfunction
